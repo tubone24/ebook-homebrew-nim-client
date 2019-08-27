@@ -9,4 +9,4 @@ const url = "https://ebook-homebrew.herokuapp.com/"
 proc getWelcomeMessage*(): string =
   var client = newHttpClient()
   var response = client.get(url & "status")
-  echo response.body
+  return response.body
