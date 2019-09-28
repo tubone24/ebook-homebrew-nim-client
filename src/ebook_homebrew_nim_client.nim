@@ -9,8 +9,10 @@ when isMainModule:
     case kind
     of cmdArgument:
       if key == "status":
-        echo(getWelcomeMessage())
+        echo(getStatus())
     of cmdLongOption, cmdShortOption:
+      if key == "h":
+        echo(getHelp())
       echo "Options > ",key,"=" ,val
     of cmdEnd:
       echo "end"

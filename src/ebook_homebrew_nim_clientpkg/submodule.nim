@@ -6,7 +6,14 @@ import httpclient
 
 const url = "https://ebook-homebrew.herokuapp.com/"
 
-proc getWelcomeMessage*(): string =
+proc getStatus*(): string =
   var client = newHttpClient()
   var response = client.get(url & "status")
   return response.body
+
+proc getHelp*(): string =
+  return """Usage:
+  ebook_homebrew_nim_client.exe [-h|--help] [-v|--version]
+  ebook_homebrew_nim_client.exe status
+  ebook_homebrew_nim_client.exe upload <directory> <extension> [--host <host>] [--port <port>]
+  """
