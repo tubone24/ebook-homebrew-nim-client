@@ -11,7 +11,7 @@ when isMainModule:
       if key == "status":
         echo(getStatus())
     of cmdLongOption, cmdShortOption:
-      if key == "h":
+      if key == "h" or key == "help":
         echo(getHelp())
       echo "Options > ",key,"=" ,val
     of cmdEnd:
