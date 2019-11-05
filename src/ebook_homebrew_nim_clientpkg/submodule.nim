@@ -2,7 +2,7 @@
 # import this file by writing ``import ebook_homebrew_nim_clientpkg/submodule``. Feel free to rename or
 # remove this file altogether. You may create additional modules alongside
 # this file as required.
-import httpclient
+import httpclient, base64
 
 const url = "https://ebook-homebrew.herokuapp.com/"
 
@@ -18,3 +18,6 @@ proc getHelp*(): string =
   ebook_homebrew_nim_client.exe upload <directory> <extension> [--host <host>] [--port <port>]
   """
   return result
+
+proc convertBase64(filePath: String)
+
