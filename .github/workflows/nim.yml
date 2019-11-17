@@ -1,0 +1,12 @@
+name: Build and test Nim
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: tubone24/setup-nim-action@v1.0.1
+      - name: Build
+        run: nimble build -d:ssl -Y
