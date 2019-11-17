@@ -2,7 +2,7 @@
 # import this file by writing ``import ebook_homebrew_nim_clientpkg/submodule``. Feel free to rename or
 # remove this file altogether. You may create additional modules alongside
 # this file as required.
-import httpclient, base64, os
+import httpclient, base64, os, lists
 
 const url = "https://ebook-homebrew.herokuapp.com/"
 
@@ -27,3 +27,8 @@ proc convertBase64*(filePath: string): string =
       echo "closed"
     return encode(f.readAll())
 
+proc listImgFile*(filePath: string): seq[string] =
+  var path = newSeq[string]()
+  for f in walkDir(filePath):
+    path.add(f.path)
+  return path

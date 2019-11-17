@@ -10,6 +10,8 @@ when isMainModule:
       if key == "status":
         echo(getStatus())
         echo(convertBase64("README.md"))
+        for i in listImgFile("tests/assets"):
+          echo i
     of cmdLongOption, cmdShortOption:
       if key == "h" or key == "help":
         echo(getHelp())
