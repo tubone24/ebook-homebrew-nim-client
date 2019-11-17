@@ -19,5 +19,4 @@ proc getHelp*(): string =
   """
   return result
 
-proc convertBase64(filePath: String)
 
