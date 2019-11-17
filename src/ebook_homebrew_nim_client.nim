@@ -9,6 +9,7 @@ when isMainModule:
     of cmdArgument:
       if key == "status":
         echo(getStatus())
+        echo(convertBase64("README.md"))
     of cmdLongOption, cmdShortOption:
       if key == "h" or key == "help":
         echo(getHelp())
