@@ -32,3 +32,9 @@ proc listImgFile*(filePath: string): seq[string] =
   for f in walkDir(filePath):
     path.add(f.path)
   return path
+
+proc listImgFiles*(filePath: string): seq[string] =
+  var base64seq = newSeq[string]()
+  for f in listImgFile(filePath):
+    base64seq.add(convertBase64(f))
+  return base64seq
