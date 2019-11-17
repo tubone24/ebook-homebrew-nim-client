@@ -9,8 +9,8 @@ when isMainModule:
     of cmdArgument:
       if key == "status":
         echo(getStatus())
-        for i in listImgFiles("tests/assets"):
-          echo i
+      if key == "upload":
+        echo(uploadImgSeq(listImgFiles("tests/assets"), "image/jpeg"))
     of cmdLongOption, cmdShortOption:
       if key == "h" or key == "help":
         echo(getHelp())

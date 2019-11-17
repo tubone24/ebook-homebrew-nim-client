@@ -2,7 +2,7 @@
 # import this file by writing ``import ebook_homebrew_nim_clientpkg/submodule``. Feel free to rename or
 # remove this file altogether. You may create additional modules alongside
 # this file as required.
-import httpclient, base64, os, lists
+import httpclient, base64, os, lists, json, strutils
 
 const url = "https://ebook-homebrew.herokuapp.com/"
 
@@ -38,3 +38,12 @@ proc listImgFiles*(filePath: string): seq[string] =
   for f in listImgFile(filePath):
     base64seq.add(convertBase64(f))
   return base64seq
+
+proc uploadImgSeq*(imgSeq: seq[string], contentType: string): string =
+  let client = newHttpClient()
+  client.headers = newHttpHeaders({ "Content-Type": "application/json" })
+  let body = %* {"contentType": contentType, "images": strip($imgSeq, chars = {'@'})}
+  echo body
+  let response = client.request(url & "data/upload", httpMethod = HttpPost, body = $body)
+  echo response.status
+  return response.body
