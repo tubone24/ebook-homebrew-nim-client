@@ -42,8 +42,29 @@ proc listImgFiles*(filePath: string): seq[string] =
 proc uploadImgSeq*(imgSeq: seq[string], contentType: string): string =
   let client = newHttpClient()
   client.headers = newHttpHeaders({ "Content-Type": "application/json" })
-  let body = %* {"contentType": contentType, "images": strip($imgSeq, chars = {'@'})}
+  let body = %* {"contentType": contentType, "images": imgSeq}
   echo body
   let response = client.request(url & "data/upload", httpMethod = HttpPost, body = $body)
   echo response.status
   return response.body
+
+proc convertImg*(uploadId: string, contentType: string): string =
+  let client = newHttpClient()
+  client.headers = newHttpHeaders({ "Content-Type": "application/json" })
+  let body = %* {"contentType": contentType, "uploadId": uploadId}
+  let response = client.request(url & "convert/pdf", httpMethod = HttpPost, body = $body)
+  echo response.status
+  return response.body
+
+proc convertPdfDownload*(uploadId: string, filename: string): void =
+  let client = newHttpClient()
+  client.headers = newHttpHeaders({ "Content-Type": "application/json" })
+  let body = %* {"uploadId": uploadId}
+  let response = client.request(url & "convert/pdf/download", httpMethod = HttpPost, body = $body)
+  echo response.status
+  block:
+    let f : File = open(filename, FileMode.fmWrite)
+    f.write(response.body)
+    defer :
+      close(f)
+      echo "closed"
