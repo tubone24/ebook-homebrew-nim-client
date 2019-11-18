@@ -10,7 +10,9 @@ when isMainModule:
       if key == "status":
         echo(getStatus())
       if key == "upload":
-        echo(uploadImgSeq(listImgFiles("tests/assets"), "image/jpeg"))
+        let uploadId = extractUploadId(uploadImgSeq(listImgFiles("tests/assets"), "image/jpeg"))
+        discard convertImg(uploadId, "image/jpeg")
+        convertPdfDownload(uploadId, "result.pdf")
     of cmdLongOption, cmdShortOption:
       if key == "h" or key == "help":
         echo(getHelp())

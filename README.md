@@ -21,5 +21,5 @@ $ ./bin/ebook_homebrew_nim_client
 
 for Windows
 ```
-$ bin¥ebook_homebrew_nim_client.exe
+$ bin\ebook_homebrew_nim_client.exe
 ```

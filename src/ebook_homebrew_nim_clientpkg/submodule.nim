@@ -68,3 +68,6 @@ proc convertPdfDownload*(uploadId: string, filename: string): void =
     defer :
       close(f)
       echo "closed"
+
+proc extractUploadId*(jsonStr: string): string =
+  return parseJson(jsonStr)["upload_id"].getStr()
