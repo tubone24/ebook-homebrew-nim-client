@@ -1,6 +1,6 @@
 # ebook-homebrew-nim-client
 
-[![Actions Status](https://github.com/tubone24/web-screenshot-to-slack-gas/workflows/Build%20and%20test%20Nim/badge.svg)](https://github.com/tubone24/ebook-homebrew-nim-client/actions)
+[![Actions Status](https://github.com/tubone24/ebook-homebrew-nim-client/workflows/Build%20and%20test%20Nim/badge.svg)](https://github.com/tubone24/ebook-homebrew-nim-client/actions)
 
 > Make pdf file which you use e-books by take in some image files such as jpeg, png and gif.
 
