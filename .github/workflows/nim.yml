@@ -12,3 +12,5 @@ jobs:
         run: nimble install -d --accept
       - name: Build
         run: nimble build
+      - name: Test
+        run: nimble test
