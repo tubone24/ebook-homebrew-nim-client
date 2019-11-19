@@ -3,9 +3,11 @@ import base64, os, json, algorithm
 
 import ebook_homebrew_nim_clientpkg/submodule
 test "listImgFile":
-  # you can get like those seq@["tests\\assets\\saved_file1570019388166.jpg", "tests\\assets\\saved_file1570022912069.jpg"]
-  check "tests\\assets\\saved_file1570019388166.jpg" in listImgFile("tests/assets") 
-  check "tests\\assets\\saved_file1570022912069.jpg" in listImgFile("tests/assets") 
+  let actual = listImgFile("tests/assets")
+  # you can get like those seq on windows @["tests\\assets\\saved_file1570019388166.jpg", "tests\\assets\\saved_file1570022912069.jpg"]
+  # you can get like those seq on linux @["tests/assets/saved_file1570019388166.jpg", "tests/assets/saved_file1570022912069.jpg"]
+  check "tests\\assets\\saved_file1570019388166.jpg" in actual or "tests/assets/saved_file1570019388166.jpg" in actual
+  check "tests\\assets\\saved_file1570022912069.jpg" in actual or "tests/assets/saved_file1570022912069.jpg" in actual
 
 test "convertBase64":
   let f : File = open("tests/assets/saved_file1570022912069.jpg" , FileMode.fmRead)
