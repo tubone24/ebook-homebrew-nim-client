@@ -9,7 +9,8 @@
 Use Nim and Nimble, so you should install nim (>=0.20.2)
 
 ```
-$ nimble build -d:ssl
+$ nimble install -d
+$ nimble build
 ```
 
 # Run

@@ -8,5 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - uses: tubone24/setup-nim-action@v1.0.1
+      - name: Install Dependencies
+        run: nimble install -d
       - name: Build
-        run: nimble build -d:ssl -Y
+        run: nimble build

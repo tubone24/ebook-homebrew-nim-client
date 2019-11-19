@@ -1,22 +1,33 @@
-# This is just an example to get you started. A typical hybrid package
-# uses this file as the main entry point of the application.
+const doc = """
+Overview:
+  Client App with ebook-homebrew's rest API for Nim
 
-import parseopt2, ebook_homebrew_nim_clientpkg/submodule
+Usage:
+  ebook_homebrew_nim_client status
+  ebook_homebrew_nim_client convert <directory> <contentType> [--output=<outputFile>]
+
+Options:
+  status                Check API Status
+  convert               Upload Images, convert to PDF and download result.pdf
+  <directory>           Specify directory with in images
+  <contentType>         Image content Type such as "image/jpeg"
+  --output=<outputFile> Output Filename [default: result.pdf]
+"""
+
+import docopt
+import ebook_homebrew_nim_clientpkg/submodule
+
+proc main() =
+  let args = docopt(doc, version = "0.1.0")
+  if args["status"]:
+    echo getStatus()
+  if args["convert"]:
+    let uploadId = extractUploadId(uploadImgSeq(listImgFiles($args["<directory>"]), $args["<contentType>"]))
+    discard convertImg(uploadId, $args["<contentType>"])
+    if args["--output"]:
+      convertPdfDownload(uploadId, $args["--output"])
+    else:
+      convertPdfDownload(uploadId, "result.pdf")
 
 when isMainModule:
-  for kind, key, val in getopt() :
-    case kind
-    of cmdArgument:
-      if key == "status":
-        echo(getStatus())
-      if key == "upload":
-        let uploadId = extractUploadId(uploadImgSeq(listImgFiles("tests/assets"), "image/jpeg"))
-        discard convertImg(uploadId, "image/jpeg")
-        convertPdfDownload(uploadId, "result.pdf")
-    of cmdLongOption, cmdShortOption:
-      if key == "h" or key == "help":
-        echo(getHelp())
-      echo "Options > ",key,"=" ,val
-    of cmdEnd:
-      echo "end"
-
+  main()
