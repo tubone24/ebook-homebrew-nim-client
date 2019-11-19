@@ -24,3 +24,9 @@ for Windows
 ```
 $ bin\ebook_homebrew_nim_client.exe
 ```
+
+# Test
+
+```
+nimble test
+```
