@@ -11,6 +11,6 @@ jobs:
       - name: Install Dependencies
         run: nimble install -d --accept
       - name: Build
-        run: nimble build
+        run: nimble build -d:release
       - name: Test
         run: nimble test
