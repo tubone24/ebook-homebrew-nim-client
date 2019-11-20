@@ -33,6 +33,24 @@ for Windows
 $ bin\ebook_homebrew_nim_client.exe
 ```
 
+## Usage
+
+```
+Overview:
+  Client App with ebook-homebrew's rest API for Nim
+
+Usage:
+  ebook_homebrew_nim_client status
+  ebook_homebrew_nim_client convert <directory> <contentType> [-o|--output=<outputFile>]
+
+Options:
+  status                      Check API Status
+  convert                     Upload Images, convert to PDF and download result.pdf
+  <directory>                 Specify directory with in images
+  <contentType>               Image content Type such as "image/jpeg"
+  -o, --output=<outputFile>   Output Filename [default: result.pdf]
+```
+
 # Test
 
 ```
