@@ -13,6 +13,14 @@ $ nimble install -d
 $ nimble build
 ```
 
+## Release Build
+
+If you would like to optimize build.
+
+```
+$ nimble build -d:release
+```
+
 # Run
 
 for LINUX

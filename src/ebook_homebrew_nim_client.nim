@@ -4,14 +4,14 @@ Overview:
 
 Usage:
   ebook_homebrew_nim_client status
-  ebook_homebrew_nim_client convert <directory> <contentType> [--output=<outputFile>]
+  ebook_homebrew_nim_client convert <directory> <contentType> [-o|--output=<outputFile>]
 
 Options:
-  status                Check API Status
-  convert               Upload Images, convert to PDF and download result.pdf
-  <directory>           Specify directory with in images
-  <contentType>         Image content Type such as "image/jpeg"
-  --output=<outputFile> Output Filename [default: result.pdf]
+  status                      Check API Status
+  convert                     Upload Images, convert to PDF and download result.pdf
+  <directory>                 Specify directory with in images
+  <contentType>               Image content Type such as "image/jpeg"
+  -o, --output=<outputFile>   Output Filename [default: result.pdf]
 """
 
 import docopt
