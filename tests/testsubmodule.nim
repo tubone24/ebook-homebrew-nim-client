@@ -34,3 +34,7 @@ test "extractUploadId":
 test "getStatus":
   let status = parseJson(getStatus())["status"].getStr()
   check status == "ok"
+
+test "getResultList":
+  let jsonStr = parseJson(getResultList())
+  check jsonStr.hasKey("fileList")
