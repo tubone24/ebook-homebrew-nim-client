@@ -4,10 +4,12 @@ Overview:
 
 Usage:
   ebook_homebrew_nim_client status
+  ebook_homebrew_nim_client list
   ebook_homebrew_nim_client convert <directory> <contentType> [-o|--output=<outputFile>]
 
 Options:
   status                      Check API Status
+  list                        Check Result List
   convert                     Upload Images, convert to PDF and download result.pdf
   <directory>                 Specify directory with in images
   <contentType>               Image content Type such as "image/jpeg"
@@ -21,6 +23,8 @@ proc main() =
   let args = docopt(doc, version = "0.1.0")
   if args["status"]:
     echo getStatus()
+  if args["list"]:
+    prettyResultList(getResultList())
   if args["convert"]:
     let uploadId = extractUploadId(uploadImgSeq(listImgFiles($args["<directory>"]), $args["<contentType>"]))
     discard convertImg(uploadId, $args["<contentType>"])

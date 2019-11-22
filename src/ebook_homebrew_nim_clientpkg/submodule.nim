@@ -4,6 +4,7 @@ const url = "https://ebook-homebrew.herokuapp.com/"
 
 proc getStatus*(): string =
   let client = newHttpClient()
+  client.headers = newHttpHeaders({ "Content-Type": "application/json" })
   let response = client.get(url & "status")
   return response.body
 
@@ -59,3 +60,14 @@ proc convertPdfDownload*(uploadId: string, filename: string): void =
 
 proc extractUploadId*(jsonStr: string): string =
   return parseJson(jsonStr)["upload_id"].getStr()
+
+proc getResultList*(): string =
+  let client = newHttpClient()
+  client.headers = newHttpHeaders({ "Content-Type": "application/json" })
+  let response = client.get(url & "data/upload/list")
+  return response.body
+
+proc prettyResultList*(jsonStr: string): void =
+  echo "id     upload_id           file_type     upload_at"
+  for item in parseJson(jsonStr)["fileList"].items:
+    echo $item["id"].getInt() & "      " & item["file_path"].getStr() & "    " & item["file_type"].getStr() & "    " & item["updated_at"].getStr()
