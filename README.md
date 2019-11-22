@@ -23,12 +23,22 @@ $ nimble build -d:release
 
 # Run
 
-for LINUX
+## Build and Run
+
+```
+$ nimble run ebook_homebrew_nim_client
+```
+
+## Or Run builder binary 
+
+### for LINUX
+
 ```
 $ ./bin/ebook_homebrew_nim_client
 ```
 
-for Windows
+### for Windows
+
 ```
 $ bin\ebook_homebrew_nim_client.exe
 ```
@@ -41,14 +51,17 @@ Overview:
 
 Usage:
   ebook_homebrew_nim_client status
+  ebook_homebrew_nim_client list
   ebook_homebrew_nim_client convert <directory> <contentType> [-o|--output=<outputFile>]
 
 Options:
   status                      Check API Status
+  list                        Check Result List
   convert                     Upload Images, convert to PDF and download result.pdf
   <directory>                 Specify directory with in images
   <contentType>               Image content Type such as "image/jpeg"
   -o, --output=<outputFile>   Output Filename [default: result.pdf]
+
 ```
 
 # Test
